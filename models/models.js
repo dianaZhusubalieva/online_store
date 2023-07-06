@@ -5,7 +5,7 @@ const User = sequelize.define("user", {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     email: { type: DataTypes.STRING, unique: true },
     password: { type: DataTypes.STRING },
-    role: { type: DataTypes.STRING, defaultValue: "USER " },
+    role: { type: DataTypes.STRING, defaultValue: "USER" },
 });
 
 const Basket = sequelize.define("basket", {
@@ -70,7 +70,7 @@ Rating.belongsTo(Device);
 Device.hasMany(BasketDevice);
 BasketDevice.belongsTo(Device);
 
-Device.hasMany(DeviceInfo);
+Device.hasMany(DeviceInfo, { as: "info" });
 DeviceInfo.belongsTo(Device);
 
 Type.belongsToMany(Brand, { through: TypeBrand });
